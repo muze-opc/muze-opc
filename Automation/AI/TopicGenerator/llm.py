@@ -1,15 +1,12 @@
-import os
 import requests
-from dotenv import load_dotenv
-
-load_dotenv()
-
-API_KEY = os.getenv("LLM_API_KEY")
-BASE_URL = os.getenv("LLM_BASE_URL")
-MODEL = os.getenv("LLM_MODEL")
+from config import API_KEY, BASE_URL, MODEL
 
 
 def chat(prompt: str):
+    print("API_KEY:", API_KEY[:10] + "..." if API_KEY else None)
+    print("BASE_URL:", repr(BASE_URL))
+    print("MODEL:", repr(MODEL))
+
     headers = {
         "Authorization": f"Bearer {API_KEY}",
         "Content-Type": "application/json",
@@ -20,10 +17,12 @@ def chat(prompt: str):
         "messages": [
             {
                 "role": "user",
-                "content": prompt
+                "content": prompt,
             }
-        ]
+        ],
     }
+
+    print("Request JSON:", data)
 
     response = requests.post(
         f"{BASE_URL}/chat/completions",
@@ -32,8 +31,12 @@ def chat(prompt: str):
         timeout=60,
     )
 
-    response.raise_for_status()
+    print("Status:", response.status_code)
+    print("Body:", response.text)
 
-    result = response.json()
+    if response.status_code != 200:
+        print("========== 返回内容 ==========")
+        print(response.text)
+        return None
 
-    return result["choices"][0]["message"]["content"]
+    return response.json()["choices"][0]["message"]["content"]

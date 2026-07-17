@@ -1,9 +1,13 @@
-from llm import chat
 from prompts import build_prompt
+from llm import chat
 
 keyword = input("请输入今天的视频关键词：")
 
-result = chat(build_prompt(keyword))
+prompt = build_prompt(keyword)
+
+print("Prompt长度：", len(prompt))
+
+result = chat(prompt)
 
 print("\n====================\n")
 print(result)
