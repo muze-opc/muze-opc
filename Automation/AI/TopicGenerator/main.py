@@ -1,3 +1,4 @@
+from save import save_markdown
 from prompts import build_prompt
 from llm import chat
 
@@ -11,3 +12,9 @@ result = chat(prompt)
 
 print("\n====================\n")
 print(result)
+
+filepath = save_markdown(keyword, result)
+
+print("\n====================")
+print("已保存到：")
+print(filepath)
