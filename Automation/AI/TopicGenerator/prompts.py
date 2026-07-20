@@ -11,7 +11,7 @@ PROMPT_FILE = BASE_DIR / "Prompts" / "default.txt"
 STYLE_FILE = BASE_DIR / "styles.json"
 
 
-def build_prompt(keyword, style):
+def build_prompt(keyword, style, platform_prompt):
     # 读取 Prompt 模板
     with open(PROMPT_FILE, "r", encoding="utf-8") as f:
         template = f.read()
@@ -25,8 +25,9 @@ def build_prompt(keyword, style):
 
     # 替换模板中的占位符
     prompt = template.format(
-        keyword=keyword,
-        style_prompt=style_info["prompt"]
-    )
+    keyword=keyword,
+    style_prompt=style_info["prompt"],
+    platform_prompt=platform_prompt
+)
 
     return prompt
