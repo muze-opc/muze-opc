@@ -10,7 +10,7 @@
 - 支持平台 Prompt
 - Prompt 模板支持平台变量
 
-## v0.8.0（开发中）
+## v0.8.0
 
 ### Added
 - 新增 platforms.json
