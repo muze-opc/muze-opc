@@ -1,37 +1,32 @@
 import json
 from pathlib import Path
 
+# 当前目录
+BASE_DIR = Path(__file__).parent
 
-# styles.json 文件路径
-STYLE_FILE = Path(__file__).parent / "styles.json"
+# Prompt 模板
+PROMPT_FILE = BASE_DIR / "Prompts" / "default.txt"
+
+# 风格配置
+STYLE_FILE = BASE_DIR / "styles.json"
 
 
 def build_prompt(keyword, style):
-    # 读取 JSON
+    # 读取 Prompt 模板
+    with open(PROMPT_FILE, "r", encoding="utf-8") as f:
+        template = f.read()
+
+    # 读取风格配置
     with open(STYLE_FILE, "r", encoding="utf-8") as f:
         styles = json.load(f)
 
-    # 获取对应风格
+    # 如果用户输入不存在，就默认使用 5（木泽OPC风格）
     style_info = styles.get(style, styles["5"])
 
-    return f"""
-你是一名专业的AI自媒体策划。
+    # 替换模板中的占位符
+    prompt = template.format(
+        keyword=keyword,
+        style_prompt=style_info["prompt"]
+    )
 
-请围绕「{keyword}」生成：
-
-1. 三个视频标题
-2. 一个3秒Hook
-3. 一个60秒视频脚本
-4. 三个适合的话题标签
-
-创作风格：
-
-{style_info["prompt"]}
-
-要求：
-
-- 中文输出
-- 适合抖音、视频号
-- 内容真实
-- 有故事感
-"""
+    return prompt
