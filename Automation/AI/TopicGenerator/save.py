@@ -11,7 +11,7 @@ def save_markdown(keyword, content, platform):
     output_dir.mkdir(parents=True, exist_ok=True)
 
     # 文件名
-    today = datetime.now().strftime("%Y-%m-%d")
+    today = datetime.now().strftime("%Y-%m-%d_%H-%M-%S")
     safe_keyword = keyword.replace(" ", "-").replace("/", "-")
     filename = f"{today}-{safe_keyword}.md"
 
