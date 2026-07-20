@@ -1,3 +1,5 @@
+from platforms import choose_platform, get_platform_prompt
+from platforms import choose_platform
 from prompts import build_prompt
 from llm import chat
 from save import save_markdown
@@ -18,6 +20,13 @@ for key, value in styles.items():
     print(f"{key}. {value['name']}")
 
 style = input("请输入编号：")
+
+platform = choose_platform()
+platform_prompt = get_platform_prompt(platform)
+
+print(platform_prompt)
+
+print(f"\n当前平台：{platform}")
 
 prompt = build_prompt(keyword, style)
 
