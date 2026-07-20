@@ -41,7 +41,11 @@ result = chat(prompt)
 print("\n====================\n")
 print(result)
 
-filepath = save_markdown(keyword, result)
+filepath = save_markdown(
+    keyword,
+    result,
+    platform
+)
 
 print("\n====================")
 print("已保存到：")

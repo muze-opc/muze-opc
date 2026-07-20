@@ -2,13 +2,13 @@ from pathlib import Path
 from datetime import datetime
 
 
-def save_markdown(keyword, content):
+def save_markdown(keyword, content, platform):
     # 项目根目录
     root = Path(__file__).resolve().parents[3]
 
     # Output 文件夹
-    output_dir = root / "Output"
-    output_dir.mkdir(exist_ok=True)
+    output_dir = root / "Output" / platform
+    output_dir.mkdir(parents=True, exist_ok=True)
 
     # 文件名
     today = datetime.now().strftime("%Y-%m-%d")
