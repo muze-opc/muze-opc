@@ -16,19 +16,17 @@
 
 ---
 
-# 项目目标
+## 项目目标
 
-## 短期（90天）
+### 短期（90天）
 
 - 学会 Python
-- 熟练使用 Codex
+- 熟练使用 AI 开发工具
 - 建立 AI 工作流
 - 发布 30 条 AI 内容
 - 开发 10 个 AI 自动化工具
 
----
-
-## 长期（365天）
+### 长期（365天）
 
 建立属于自己的：
 
@@ -39,66 +37,64 @@
 
 ---
 
-# 当前项目结构
+## 当前项目结构
 
+```
 MuzeOPC
-
 ├── Docs
 ├── Content
 ├── Automation
 ├── Agents
 ├── Assets
 ├── Website
-├── Archive
+└── Archive
+```
 
 ---
 
-# 技术栈
+## 技术栈
 
-- VS Code
+当前：
+
 - Python
 - Git
-- Homebrew
-- Codex
+- VS Code
 - ChatGPT
+- Homebrew
 
-未来：
+计划：
 
 - FastAPI
 - Docker
-- GitHub
+- GitHub Actions
 - MCP
 - AI Agent
 
 ---
 
-# 当前开发环境
+## 开发环境
 
-Mac mini M4
+### Mac mini M4
 
 - 16GB RAM
 - 256GB SSD
 
-Windows 工作站
+### Windows 工作站
 
-- RTX4070
+- RTX 4070
 - i5-13600KF
 - 32GB DDR5
 
 ---
 
-# 开发原则
+## 开发原则
 
-Build once, use forever.
+> Build once, use forever.
 
-所有成果都沉淀为资产。
-
-AI 不是工具，而是团队成员。
-
-每天让木泽OPC前进一步。
+- 所有成果都沉淀为资产。
+- AI 不是工具，而是团队成员。
+- 每天让 MuzeOPC 前进一步。
 
 ---
 
-作者：
-
-木泽OPC
+**作者：木泽OPC**
