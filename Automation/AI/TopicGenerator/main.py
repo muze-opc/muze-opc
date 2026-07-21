@@ -1,52 +1,37 @@
-from platforms import choose_platform, get_platform_prompt
-from prompts import build_prompt
-from llm import chat
-from save import save_markdown
+from platforms import choose_platforms
+from styles import choose_style
+from generator import generate_content
 
-import json
-from pathlib import Path
+from logger import success, info
+from utils import divider
 
-STYLE_FILE = Path(__file__).parent / "styles.json"
+# 输入关键词
+keyword = input("请输入今天的视频关键词：").strip()
 
-with open(STYLE_FILE, "r", encoding="utf-8") as f:
-    styles = json.load(f)
+# 选择风格
+style = choose_style()
 
-keyword = input("请输入今天的视频关键词：")
+# 选择平台
+platforms = choose_platforms()
 
-print("\n请选择创作风格：\n")
+saved_files = []
 
-for key, value in styles.items():
-    print(f"{key}. {value['name']}")
+# 批量生成
+for platform in platforms:
 
-style = input("请输入编号：")
+    filepath = generate_content(
+        keyword,
+        style,
+        platform
+    )
 
-platform = choose_platform()
-platform_prompt = get_platform_prompt(platform)
+    saved_files.append(filepath)
 
-print("\n平台要求：")
-print(platform_prompt)
+divider()
 
-print(f"\n当前平台：{platform}")
+success("全部平台生成完成")
 
-prompt = build_prompt(
-    keyword,
-    style,
-    platform_prompt
-)
+for path in saved_files:
+    info(path)
 
-print("Prompt长度：", len(prompt))
-
-result = chat(prompt)
-
-print("\n====================\n")
-print(result)
-
-filepath = save_markdown(
-    keyword,
-    result,
-    platform
-)
-
-print("\n====================")
-print("已保存到：")
-print(filepath)
+divider()

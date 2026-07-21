@@ -3,6 +3,23 @@
 所有重要的项目更新都会记录在这里。
 
 ---
+## v1.2.0（开发中）
+
+### 新增
+- 多平台批量生成
+- styles.py
+- logger.py
+- utils.py
+
+### 优化
+- Prompt 模块化
+- Output 重构
+- Generator 重构
+
+### 修复
+- GitHub 冲突
+- .gitignore 优化
+
 ## v0.9.0
 
 ### Added
