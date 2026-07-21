@@ -31,6 +31,8 @@ API_KEY = os.getenv("LLM_API_KEY")
 BASE_URL = os.getenv("LLM_BASE_URL")
 MODEL = os.getenv("LLM_MODEL", "gpt-5.5")
 
+OUTPUT_DIR = PROJECT_ROOT / "Output"
+
 # ==========================
 # 调试
 # ==========================

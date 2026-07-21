@@ -34,7 +34,8 @@ def divider(length=60):
     """
     print("=" * length)
 
-    def blank():
+
+def blank():
     """
     打印空行
     """
